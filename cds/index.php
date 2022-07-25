@@ -4,12 +4,26 @@
 <title>Criar CDS</title>
 </head>
 
+<link rel="stylesheet" href="style.css">
+
 <body>
-    <a href="estilo.php">Adicionar Estilo</a>
-    <a href="">Adicionar Artista</a>
-    <a href="">Adicionar Gravadora</a>
-    <a href="">Adicionar CD</a>
-    <a href="">Pesquisar</a>
+    <div class="bloco">
+        <div>
+            <a href="estilo.php">Adicionar Estilo</a>
+        </div>
+        <div>
+            <a href="artista.php">Adicionar Artista</a>
+        </div>
+        <div>
+            <a href="gravadora.php">Adicionar Gravadora</a>
+         </div>
+        <div>
+            <a href="">Adicionar CD</a>
+        </div>
+        <div>
+            <a href="">Pesquisar</a>
+        </div>
+    </div>
 </body>
 
 </html>

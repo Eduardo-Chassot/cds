@@ -1,0 +1,4 @@
+.bloco{
+    display: flexbox;
+    align-self: center;
+}
