@@ -7,7 +7,7 @@ if(isset($_POST['botao'])) {
         $tabela = 'estilo';
         $coluna = 'identificacao';
         if($_POST['Estilo'] != ''){
-            $nome = $_POST['Artista'];
+            $nome = $_POST['Estilo'];
             include 'includes/salva-dados.php';
             header("location: index.php");
         }
@@ -28,23 +28,28 @@ if(isset($_POST['botao'])) {
                 $coluna = 'identificacao';
                 $nome = $_POST['Gravadora'];
                 if($nome != ''){
-                    $nome = $_POST['Gravadora'];
                     include 'includes/salva-dados.php';
                     header("location: index.php");
                 }
             }else {
                 if($_POST['botao'] == "EnviarCD"){
                     $tipo = 1;
-                    $tabela = cd;
-                    $colunas = 'titulo, ano, artista_idArtista, gravadora_idGravadora, estilo_idEstilo'
+                    $tabela = 'cd';
+                    $coluna = 'titulo, ano, artista_idArtista, gravadora_idGravadora, estilo_idEstilo';
                     $titulo = $_POST['Titulo'];
                     $ano = $_POST['Ano'];
                     $artista = $_POST['Artista'];
                     $gravadora = $_POST['Gravadora'];
                     $estilo = $_POST['Estilo'];
-                    
+                    $nome = $_POST['Titulo'];
+                    if($nome != '' && $ano != 0 && $artista != 0 && $gravadora != 0 && $estilo != 0){
+                        include 'includes/salva-dados.php';
+                    } else {
+                        echo "Preencha todos os campos";
+                    }             
                 }
         }
+    }
     }
 }
 ?>

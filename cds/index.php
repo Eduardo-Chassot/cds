@@ -18,7 +18,7 @@
             <a href="gravadora.php">Adicionar Gravadora</a>
          </div>
         <div>
-            <a href="">Adicionar CD</a>
+            <a href="cd.php">Adicionar CD</a>
         </div>
         <div>
             <a href="">Pesquisar</a>
