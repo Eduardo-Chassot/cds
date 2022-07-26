@@ -21,7 +21,7 @@
             <a href="cd.php">Adicionar CD</a>
         </div>
         <div>
-            <a href="">Pesquisar</a>
+            <a href="pesquisa.php">Pesquisar</a>
         </div>
     </div>
 </body>

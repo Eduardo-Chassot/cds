@@ -11,7 +11,7 @@ include 'includes/busca-estilo.php';
 <!DOCTYPE html>
 <html>
 <head>
-<title>Criar CDS</title>
+<title>Buscar CDS</title>
 </head>
 
 <body>
