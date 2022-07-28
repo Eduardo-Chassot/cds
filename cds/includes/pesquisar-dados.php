@@ -1,23 +1,31 @@
 <?php 
 
+$firstWhere = 0;
 $where = "";
 
 if($titulo){
-    $where .= "AND ";
+    if($firstWhere = 0){
+        $where .= "AND ";
+        $firstWhere = 1;
+    }
     $where .= "titulo LIKE {$titulo}";
 }
 
 if($ano){
-    $where .= "AND";
+    if($firstWhere = 0){
+        $where .= "AND ";
+        $firstWhere = 1;
+    }
     $where .= "ano = {$ano}";
 }
 
 if($artista){
-    $where .= "AND";
+    if($firstWhere = 0){
+        $where .= "AND ";
+        $firstWhere = 1;
+    }
     $where .= "artista_idArtista = $artista";
 }
 
-if(){
-    
-}
+echo $where; die;
 ?>

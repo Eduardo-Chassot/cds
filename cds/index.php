@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 
 <body>
-    <div class="bloco">
+    <div>
         <div>
             <a href="estilo.php">Adicionar Estilo</a>
         </div>
