@@ -63,13 +63,15 @@ $resultadoArtistas = $banco->consulta($queryArtista);
 <?php foreach($resultado as $chave=>$valor){ ?>
     <div>
         <?=
-        $artistaID = $resultado['artista_idArtista'];
-        $queryArtista = "SELECT nome FROM artista WHERE idArtista = $valor['artista_idArtista']";
+        $artistaID = $valor['artista_idArtista'];
+        $queryArtista = "SELECT nome FROM artista WHERE idArtista = $artistaID";
         echo $queryArtista;
-        //$resultadoArtistas = $banco->consulta($queryArtista);//
+        $resultadoArtistas = $banco->consulta($queryArtista);
+        foreach($resultadoArtistas as $key=>$value){ 
         ?>
-        <h1><?= $valor['titulo'];?></h1>   
+        <h1><?= $valor['titulo'];?></h1>
+        <h1><?= $value['nome'];?></h1>
     </div>
 
-<?php }?>
+<?php } }?>
     
