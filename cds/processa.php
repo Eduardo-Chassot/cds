@@ -58,6 +58,7 @@ if(isset($_POST['botao'])) {
                     $nome = $_POST['Titulo'];
                     $coluna = 'titulo, ano, artista_idArtista, gravadora_idGravadora, estilo_idEstilo';
                     $tabela = 'cd';
+                    include 'includes/pesquisar-dados';
                     
                 }
             }
