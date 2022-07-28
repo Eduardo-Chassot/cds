@@ -47,22 +47,22 @@ if(isset($_POST['botao'])) {
                     } else {
                         echo "Preencha todos os campos";
                     }             
-                }
-            } else {
-                if($_POST['botao'] == "Pesquisar"){
-                    $titulo = $_POST['Titulo'];
-                    $ano = $_POST['Ano'];
-                    $artista = $_POST['Artista'];
-                    $gravadora = $_POST['Gravadora'];
-                    $estilo = $_POST['Estilo'];
-                    $nome = $_POST['Titulo'];
-                    $coluna = 'titulo, ano, artista_idArtista, gravadora_idGravadora, estilo_idEstilo';
-                    $tabela = 'cd';
-                    include 'includes/pesquisar-dados';
+                } else {
+                    if($_POST['botao'] == "Pesquisar"){
+                        $titulo = $_POST['Titulo'];
+                        $ano = $_POST['Ano'];
+                        $artista = $_POST['Artista'];
+                        $gravadora = $_POST['Gravadora'];
+                        $estilo = $_POST['Estilo'];
+                        $nome = $_POST['Titulo'];
+                        $coluna = 'titulo, ano, artista_idArtista, gravadora_idGravadora, estilo_idEstilo';
+                        $tabela = 'cd';
+                        include 'includes/pesquisar-dados.php';
+                    }
                     
                 }
             }
-    }
+        }
     }
 }
 ?>
