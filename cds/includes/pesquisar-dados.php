@@ -15,15 +15,27 @@ if($ano){
 }
 
 if($artista){
-    $where .= " AND artista_idArtista = $artista";
+    if($artista==99){
+        $where .= "";
+    } else {
+        $where .= " AND artista_idArtista = $artista";
+    }
 }
 
 if($gravadora){
-     $where .= " AND gravadora_idGravadora = $gravadora";
+    if($gravadora==99){
+        $where .= "";
+    } else {
+         $where .= " AND gravadora_idGravadora = $gravadora";
+    }
 }
 
 if($estilo){
-    $where .= " AND estilo_idEstilo = $estilo";
+    if($estilo==99){
+        $where .= "";
+    } else {
+         $where .= " AND estilo_idEstilo = $estilo";
+    }
 }
 
 //================Executa===================//
@@ -49,12 +61,13 @@ foreach($resultado as $key=>$dados){
     WHERE
         idArtista = {$dados['artista_idArtista']}";
     $resultadoLink = $banco->consulta($queryInfo);
+    echo $queryInfo;
     foreach($resultadoLink as $chave=>$valor){ ?>
         <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
     <?php }
 };
 ?>
-<a href="pesquisa.php">Pesquisar outro</a>
+<a href="pesquisar.php">Pesquisar outro</a>
 </html>
 
 

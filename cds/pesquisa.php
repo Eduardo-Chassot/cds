@@ -19,18 +19,21 @@ include 'includes/busca-estilo.php';
         <input type="text" name="Titulo" placeholder="Nome Do CD"></input>
         <input type="number" name="Ano" placeholder="Data de publicação"></input>
         <select name= "Artista">
+            <option value='99'>Todos Artistas</option>
             <?php
                 foreach($dadosArtista as $valor){ ?>
                     <option value='<?=$valor['idArtista']?>'><?=$valor['nome']?></option>
             <?php }; ?>
         </select>
         <select name="Gravadora">
+            <option value='99'>Todas Gravadoras</option>
             <?php
                 foreach($dadosGravadora as $valor){ ?>
                     <option value='<?=$valor['idGravadora']?>'><?=$valor['identificacao']?></option>
             <?php }; ?>
         </select>
         <select name="Estilo">
+            <option value='99'>Todos Estilos</option>
             <?php
                 foreach($dadosEstilo as $valor){ ?>
                     <option value='<?=$valor['idEstilo']?>'><?=$valor['identificacao']?></option>
