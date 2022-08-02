@@ -7,7 +7,7 @@ $banco = new MySQL();
 $where = "1=1";
 
 if($titulo){
-    $where .= " AND titulo LIKE '$titulo%'";
+    $where .= " AND titulo LIKE '%$titulo%'";
 }
 
 if($ano){
@@ -88,20 +88,3 @@ if($resultado){
 </table>
 <a href="pesquisa.php">Pesquisar outro</a>
 </html>
-
-
-
-<?php /*
-$queryInfo = "SELECT a.nome as nome, g.identificacao as nomeGravadora, e.identificacao as nomeEstilo
-        FROM 
-            artista a 
-        RIGHT JOIN 
-            gravadora g 
-        ON 
-            idGravadora = {$dados['gravadora_idGravadora']}
-        RIGHT JOIN
-            estilo e
-        ON
-            idEstilo = {$dados['estilo_idEstilo']}
-        WHERE
-            idArtista = {$dados['artista_idArtista']}"; */ 
