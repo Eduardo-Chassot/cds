@@ -1,5 +1,5 @@
 <?php
-///
+//////
 
 if(isset($_POST['botao'])) {
     if($_POST['botao'] == 'EnviarEstilo'){
