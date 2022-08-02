@@ -45,6 +45,14 @@ $resultado = $banco->consulta($query);
 
 ?>
 <html>
+<table border="1">
+<tr>
+    <td>Nome</td>
+    <td>Ano</td>
+    <td>Artista</td>
+    <td>Gravadora</td>
+    <td>Genero</td>
+</tr>
 <?php
 if($resultado){
     foreach($resultado as $key=>$dados){
@@ -63,12 +71,37 @@ if($resultado){
             idArtista = {$dados['artista_idArtista']}";
         $resultadoLink = $banco->consulta($queryInfo);
         foreach($resultadoLink as $chave=>$valor){ ?>
-            <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
-        <?php }
+            <tr>
+            <td><?=$dados['titulo']?></td>
+            <td><?=$dados['ano']?></td> 
+            <td><?=$valor['nome']?></td> 
+            <td><?=$valor['nomeGravadora']?></td> 
+            <td><?=$valor['nomeEstilo']?></td> 
+            </tr>
+        <?php       
+        }
     }
 } else {
-    ?> <h1>Nenhum Resultado!!</h1> <?php
+
 }
 ?>
+</table>
 <a href="pesquisa.php">Pesquisar outro</a>
 </html>
+
+
+
+<?php /*
+$queryInfo = "SELECT a.nome as nome, g.identificacao as nomeGravadora, e.identificacao as nomeEstilo
+        FROM 
+            artista a 
+        RIGHT JOIN 
+            gravadora g 
+        ON 
+            idGravadora = {$dados['gravadora_idGravadora']}
+        RIGHT JOIN
+            estilo e
+        ON
+            idEstilo = {$dados['estilo_idEstilo']}
+        WHERE
+            idArtista = {$dados['artista_idArtista']}"; */ 

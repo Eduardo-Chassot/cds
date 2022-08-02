@@ -44,6 +44,7 @@ if(isset($_POST['botao'])) {
                     $nome = $_POST['Titulo'];
                     if($nome != '' && $ano != 0 && $artista != 0 && $gravadora != 0 && $estilo != 0){
                         include 'includes/salva-dados.php';
+                        header("location: index.php");
                     } else {
                         echo "Preencha todos os campos";
                     }             
