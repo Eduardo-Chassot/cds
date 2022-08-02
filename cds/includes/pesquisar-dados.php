@@ -71,5 +71,5 @@ if($resultado){
     ?> <h1>Nenhum Resultado!!</h1> <?php
 }
 ?>
-<a href="pesquisar.php">Pesquisar outro</a>
+<a href="pesquisa.php">Pesquisar outro</a>
 </html>
