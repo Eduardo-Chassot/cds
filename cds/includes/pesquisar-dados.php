@@ -4,74 +4,58 @@ require_once "BD/MySQL.class.php";
 
 $banco = new MySQL();
 
-$firstWhere = 0;
-$where = "";
+$where = "1=1";
 
 if($titulo){
-    if($firstWhere == 0){
-        $firstWhere = 1;
-        $where .= "titulo LIKE '$titulo'";
-    } else { 
-        $where .= " AND titulo LIKE '$titulo'";
-    }
+    $where .= " AND titulo LIKE '$titulo%'";
 }
 
 if($ano){
-    if($firstWhere == 0){
-        $firstWhere = 1;
-        $where .= "ano = $ano";
-    } else { 
-        $where .= " AND ano = $ano";
-    }
+    $where .= " AND ano = $ano";
 }
 
 if($artista){
-    if($firstWhere == 0){
-        $firstWhere = 1;
-        $where .= "artista_idArtista = '$artista'";
-    }else { 
-        $where .= " AND artista_idArtista = '$artista'";
-    }
+    $where .= " AND artista_idArtista = $artista";
 }
 
 if($gravadora){
-    if($firstWhere == 0){
-        $where .= "gravadora_idGravadora = $gravadora";
-        $firstWhere = 1;
-    } else {
-        $where .= " AND gravadora_idGravadora = $gravadora";
-    }
+     $where .= " AND gravadora_idGravadora = $gravadora";
 }
 
 if($estilo){
-    if($firstWhere == 0){
-        $where .= "estilo_idEstilo = $estilo";
-        $firstWhere = 1;
-    } else {
-        $where .= " AND estilo_idEstilo = $estilo";
-    }
+    $where .= " AND estilo_idEstilo = $estilo";
 }
+
+//================Executa===================//
 
 $query = "SELECT * FROM cd WHERE $where";
 $resultado = $banco->consulta($query);
 
-$queryArtista = "SELECT nome FROM artista WHERE idArtista = $artista";
-$resultadoArtistas = $banco->consulta($queryArtista);
 ?>
+<html>
+<?php
+foreach($resultado as $key=>$dados){
+    $queryInfo = "SELECT a.nome as nome, g.identificacao as nomeGravadora, e.identificacao as nomeEstilo
+    FROM 
+        artista a 
+    RIGHT JOIN 
+        gravadora g 
+    ON 
+        idGravadora = {$dados['gravadora_idGravadora']}
+    RIGHT JOIN
+        estilo e
+    ON
+        idEstilo = {$dados['estilo_idEstilo']}
+    WHERE
+        idArtista = {$dados['artista_idArtista']}";
+    $resultadoLink = $banco->consulta($queryInfo);
+    foreach($resultadoLink as $chave=>$valor){ ?>
+        <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
+    <?php }
+};
+?>
+<a href="pesquisa.php">Pesquisar outro</a>
+</html>
 
 
-<?php foreach($resultado as $chave=>$valor){ ?>
-    <div>
-        <?=
-        $artistaID = $valor['artista_idArtista'];
-        $queryArtista = "SELECT nome FROM artista WHERE idArtista = $artistaID";
-        echo $queryArtista;
-        $resultadoArtistas = $banco->consulta($queryArtista);
-        foreach($resultadoArtistas as $key=>$value){ 
-        ?>
-        <h1><?= $valor['titulo'];?></h1>
-        <h1><?= $value['nome'];?></h1>
-    </div>
-
-<?php } }?>
     
