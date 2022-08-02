@@ -62,7 +62,6 @@ if($resultado){
         WHERE
             idArtista = {$dados['artista_idArtista']}";
         $resultadoLink = $banco->consulta($queryInfo);
-        echo $queryInfo;
         foreach($resultadoLink as $chave=>$valor){ ?>
             <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
         <?php }
