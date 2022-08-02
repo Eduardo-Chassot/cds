@@ -46,29 +46,30 @@ $resultado = $banco->consulta($query);
 ?>
 <html>
 <?php
-foreach($resultado as $key=>$dados){
-    $queryInfo = "SELECT a.nome as nome, g.identificacao as nomeGravadora, e.identificacao as nomeEstilo
-    FROM 
-        artista a 
-    RIGHT JOIN 
-        gravadora g 
-    ON 
-        idGravadora = {$dados['gravadora_idGravadora']}
-    RIGHT JOIN
-        estilo e
-    ON
-        idEstilo = {$dados['estilo_idEstilo']}
-    WHERE
-        idArtista = {$dados['artista_idArtista']}";
-    $resultadoLink = $banco->consulta($queryInfo);
-    echo $queryInfo;
-    foreach($resultadoLink as $chave=>$valor){ ?>
-        <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
-    <?php }
-};
+if($resultado){
+    foreach($resultado as $key=>$dados){
+        $queryInfo = "SELECT a.nome as nome, g.identificacao as nomeGravadora, e.identificacao as nomeEstilo
+        FROM 
+            artista a 
+        RIGHT JOIN 
+            gravadora g 
+        ON 
+            idGravadora = {$dados['gravadora_idGravadora']}
+        RIGHT JOIN
+            estilo e
+        ON
+            idEstilo = {$dados['estilo_idEstilo']}
+        WHERE
+            idArtista = {$dados['artista_idArtista']}";
+        $resultadoLink = $banco->consulta($queryInfo);
+        echo $queryInfo;
+        foreach($resultadoLink as $chave=>$valor){ ?>
+            <h1>Nome do cd: <?=$dados['titulo']?>; Publicado em: <?=$dados['ano']?>; Publicado por: <?=$valor['nome']?>; Pela gravadora: <?=$valor['nomeGravadora']?>; Do gênero musical: <?=$valor['nomeEstilo']?></h1>
+        <?php }
+    }
+} else {
+    ?> <h1>Nenhum Resultado!!</h1> <?php
+}
 ?>
 <a href="pesquisar.php">Pesquisar outro</a>
 </html>
-
-
-    
